@@ -1,8 +1,23 @@
 # Copied and adapted from: https://github.com/hao-ai-lab/FastVideo
-from sglang.multimodal_gen.configs.pipeline_configs import PipelineConfig
-from sglang.multimodal_gen.configs.sample import SamplingParams
-from sglang.multimodal_gen.runtime.entrypoints.diffusion_generator import DiffGenerator
 
 __all__ = ["DiffGenerator", "PipelineConfig", "SamplingParams"]
+
+
+def __getattr__(name):
+    if name == "DiffGenerator":
+        from sglang.multimodal_gen.runtime.entrypoints.diffusion_generator import (
+            DiffGenerator,
+        )
+
+        return DiffGenerator
+    if name == "PipelineConfig":
+        from sglang.multimodal_gen.configs.pipeline_configs import PipelineConfig
+
+        return PipelineConfig
+    if name == "SamplingParams":
+        from sglang.multimodal_gen.configs.sample import SamplingParams
+
+        return SamplingParams
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
 
 # Trigger multimodal CI tests
