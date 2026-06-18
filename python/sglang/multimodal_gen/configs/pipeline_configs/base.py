@@ -59,6 +59,7 @@ class ModelTaskType(Enum):
     I2I = auto()  # Image to Image
     TI2I = auto()  # Image to Image or Text-Image to Image
     I2M = auto()  # Image to Mesh
+    ACTION = auto()  # Observation to action chunk
 
     def is_image_gen(self) -> bool:
         return (
@@ -84,6 +85,8 @@ class ModelTaskType(Enum):
         )
 
     def data_type(self) -> DataType:
+        if self == ModelTaskType.ACTION:
+            return DataType.ACTION
         if self == ModelTaskType.I2M:
             return DataType.MESH
         if self.is_image_gen():

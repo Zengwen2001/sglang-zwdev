@@ -76,13 +76,16 @@ class DataType(Enum):
     IMAGE = auto()
     VIDEO = auto()
     MESH = auto()
+    ACTION = auto()
 
     def get_default_extension(self) -> str:
         if self == DataType.IMAGE:
             return "png"
         if self == DataType.VIDEO:
             return "mp4"
-        return "glb"
+        if self == DataType.MESH:
+            return "glb"
+        return "json"
 
 
 @dataclass
@@ -227,7 +230,7 @@ class SamplingParams:
         # add extension if needed
         if not any(
             self.output_file_name.endswith(ext)
-            for ext in [".mp4", ".jpg", ".png", ".webp", ".obj", ".glb"]
+            for ext in [".mp4", ".jpg", ".png", ".webp", ".obj", ".glb", ".json"]
         ):
             self.output_file_name = (
                 f"{self.output_file_name}.{self.data_type.get_default_extension()}"

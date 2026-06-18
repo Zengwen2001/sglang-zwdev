@@ -1,6 +1,10 @@
 # Copied and adapted from: https://github.com/hao-ai-lab/FastVideo
 
 from sglang.multimodal_gen.configs.models.dits.cosmos3video import Cosmos3VideoConfig
+from sglang.multimodal_gen.configs.models.dits.dreamzero_causal import (
+    DreamZeroCausalWanArchConfig,
+    DreamZeroCausalWanConfig,
+)
 from sglang.multimodal_gen.configs.models.dits.helios import HeliosConfig
 from sglang.multimodal_gen.configs.models.dits.hunyuan3d import Hunyuan3DDiTConfig
 from sglang.multimodal_gen.configs.models.dits.hunyuanvideo import HunyuanVideoConfig
@@ -13,6 +17,8 @@ from sglang.multimodal_gen.configs.models.dits.wanvideo import WanVideoConfig
 
 __all__ = [
     "Cosmos3VideoConfig",
+    "DreamZeroCausalWanArchConfig",
+    "DreamZeroCausalWanConfig",
     "HeliosConfig",
     "HunyuanVideoConfig",
     "WanVideoConfig",
